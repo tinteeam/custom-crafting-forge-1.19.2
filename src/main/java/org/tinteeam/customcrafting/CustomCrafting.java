@@ -16,6 +16,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import org.slf4j.Logger;
+import org.tinteeam.customcrafting.item.item;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(CustomCrafting.MODID)
@@ -35,7 +36,7 @@ public class CustomCrafting
         modEventBus.addListener(this::commonSetup);
 
 
-
+        item.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
