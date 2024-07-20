@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "custom_crafting:item/blank_diamond"
+        "layer0": "customcrafting:item/blank_diamond"
     }
 }

@@ -1,3 +1,5 @@
 {
-  "item.custom_crafting.blank_diamond": "blank diamond"
+  "item.customcrafting.blank_diamond": "blank diamond",
+
+  "itemGroup.customcrafting": "custom crafting"
 }

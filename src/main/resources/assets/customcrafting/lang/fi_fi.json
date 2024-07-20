@@ -1,3 +1,5 @@
 {
-  "item.custom_crafting.blank_diamond": "tyhjä timantti"
+  "item.customcrafting.blank_diamond": "tyhjä timantti",
+
+  "itemGroup.customcrafting": "muokattu käsityö"
 }
