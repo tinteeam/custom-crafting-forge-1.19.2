@@ -1,5 +1,8 @@
 {
   "item.customcrafting.blank_diamond": "blank diamond",
 
-  "itemGroup.custom_crafting_items": "custom crafting items "
+  "itemGroup.custom_crafting_items": "custom crafting items ",
+  "block.customcrafting.machine_frame": "machine frame",
+  "block.customcrafting.power_furnace": "power furnace",
+  "item.customcrafting.forge_energy_coil": "FE coil"
 }
