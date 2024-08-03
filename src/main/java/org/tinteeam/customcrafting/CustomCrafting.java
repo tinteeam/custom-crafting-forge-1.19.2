@@ -16,7 +16,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import org.slf4j.Logger;
+//mod imports from the mod itself to use
 import org.tinteeam.customcrafting.block.ModBlocks;
+import org.tinteeam.customcrafting.block.entity.ModBlockEntities;
 import org.tinteeam.customcrafting.item.item;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -36,9 +38,13 @@ public class CustomCrafting
 
         modEventBus.addListener(this::commonSetup);
 
-
+        //register item
         item.register(modEventBus);
+        //register block
         ModBlocks.register(modEventBus);
+        //register block entity
+        ModBlockEntities.register(modEventBus);
+
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -49,14 +55,11 @@ public class CustomCrafting
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
-
-        if (Config.logDirtBlock)
-            LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
-
-        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-
-        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+        //log!
+        LOGGER.info("the mod has loaded");
+        LOGGER.info("this info tells that the mod is working");
+        LOGGER.info("If any issues come you can always report them");
+        LOGGER.info("report issues at https://github.com/tinteeam/custom-crafting-forge-1.19.2");
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -70,8 +73,9 @@ public class CustomCrafting
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // Some client setup code
-            LOGGER.info("the mod loaded success fully");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            LOGGER.info("the mod has loaded");
+            LOGGER.info("this info tells that the mod is working");
+            LOGGER.info("If any issues come you can always report them");
         }
     }
 }

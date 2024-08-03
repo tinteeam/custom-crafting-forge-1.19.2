@@ -1,4 +1,9 @@
 
+# note!
+as of the latest commit the mod is deprecated and the repo archived
+
+you can't build it at all due to errors that why we decided to deprecate the mod
+
 Source installation information for modders
 -------------------------------------------
 This code follows the Minecraft Forge installation methodology. It will apply
@@ -8,7 +13,6 @@ to some of the data and functions you need to build a successful mod.
 Note also that the patches are built against "un-renamed" MCP source code (aka
 SRG Names) - this means that you will not be able to read them directly against
 normal code.
-
 Setup Process:
 ==============================
 

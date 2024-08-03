@@ -10,7 +10,11 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
@@ -19,6 +23,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import org.jetbrains.annotations.NotNull;
+import org.tinteeam.customcrafting.block.ModBlocks;
 
 import javax.annotation.Nullable;
 
@@ -31,8 +36,9 @@ public class PowerFurnaceBlockEntity extends BlockEntity implements MenuProvider
     };
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
-    public PowerFurnaceBlockEntity( BlockPos pos, BlockState state) {
-        super(p_155228_, pos, state);
+
+    public PowerFurnaceBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.POWER_FURNACE.get(), pos, state);
     }
 
     @Override
@@ -49,7 +55,7 @@ public class PowerFurnaceBlockEntity extends BlockEntity implements MenuProvider
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @org.jetbrains.annotations.Nullable Direction side) {
         if (cap == ForgeCapabilities.ITEM_HANDLER) {
-            return lazyItemHandler.cast()   ;
+            return lazyItemHandler.cast();
         }
 
 
@@ -61,14 +67,16 @@ public class PowerFurnaceBlockEntity extends BlockEntity implements MenuProvider
         super.onLoad();
         lazyItemHandler = LazyOptional.of(() -> itemHandler);
     }
+
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
     }
+
     @Override
     protected void saveAdditional(CompoundTag nbt) {
-        nbt.put("inventory", itemHandler.serializeNBT() );
+        nbt.put("inventory", itemHandler.serializeNBT());
 
 
         super.saveAdditional(nbt);
@@ -79,6 +87,7 @@ public class PowerFurnaceBlockEntity extends BlockEntity implements MenuProvider
         super.load(nbt);
         itemHandler.deserializeNBT(nbt.getCompound("inventory"));
     }
+
     public void drops() {
         SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
         for (int i = 0; i < itemHandler.getSlots(); i++) {
@@ -87,5 +96,10 @@ public class PowerFurnaceBlockEntity extends BlockEntity implements MenuProvider
 
         Containers.dropContents(this.level, this.worldPosition, inventory);
 
-
+        
     }
+
+    //tick method
+    public  static void tick(Level level, BlockPos pos, BlockState state,PowerFurnaceBlockEntity pEntity) {
+    }
+}
